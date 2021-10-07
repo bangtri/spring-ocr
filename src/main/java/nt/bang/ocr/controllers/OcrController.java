@@ -20,7 +20,7 @@ public class OcrController {
     @Autowired
     private OcrService ocrService;
 
-    @PostMapping("/upload")
+    @PostMapping("/detect")
     public ResponseEntity<OcrResult> upload(@RequestParam("file") MultipartFile file) throws IOException, TesseractException {
         return ResponseEntity.ok(ocrService.ocr(file));
     }

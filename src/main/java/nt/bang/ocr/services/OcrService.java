@@ -18,16 +18,6 @@ public class OcrService {
     @Autowired
     private Tesseract tesseract;
 
-    public OcrResult ocr(MultipartFile file) throws IOException, TesseractException {
-        File convFile = convert(file);
-        String text = tesseract.doOCR(convFile);
-        convFile.delete();
-        OcrResult ocrResult = new OcrResult();
-        ocrResult.setResult(text);
-        System.out.println("text" + text);
-        return ocrResult;
-    }
-
     public static File convert(MultipartFile file) throws IOException {
         File convFile = new File(Objects.requireNonNull(file.getOriginalFilename()));
         convFile.createNewFile();
@@ -35,5 +25,14 @@ public class OcrService {
         fos.write(file.getBytes());
         fos.close();
         return convFile;
+    }
+
+    public OcrResult ocr(MultipartFile file) throws IOException, TesseractException {
+        File convFile = convert(file);
+        String text = tesseract.doOCR(convFile);
+        convFile.delete();
+        OcrResult ocrResult = new OcrResult();
+        ocrResult.setResult(text);
+        return ocrResult;
     }
 }
