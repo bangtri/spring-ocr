@@ -8,8 +8,8 @@ They are based on the sources in
 
 These have models for legacy tesseract engine (--oem 0) as well as the new LSTM neural net based engine (--oem 1).
 
-The LSTM models (--oem 1) in these files 
-have been updated to the integerized versions of 
+The LSTM models (--oem 1) in these files
+have been updated to the integerized versions of
 [tessdata_best](https://github.com/tesseract-ocr/tessdata_best) on GitHub.
 So, they should be faster but probably a little less accurate than tessdata_best.
 
